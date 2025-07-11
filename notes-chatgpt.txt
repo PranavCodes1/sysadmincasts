@@ -1,0 +1,409 @@
+💡 What is an RPM package?
+
+✅ RPM stands for Red Hat Package Manager.
+It is a package format (file extension .rpm) and also the tool used to manage these packages on Linux distributions that are based on Red Hat (like RHEL, CentOS, Fedora, Rocky Linux, AlmaLinux, etc.).
+
+🗂 What does an RPM package contain?
+
+An RPM package is essentially a compressed archive that includes:
+
+    Compiled binaries (the actual program or libraries)
+
+    Configuration files
+
+    Metadata (version, dependencies, description, etc.)
+
+    Installation scripts (for pre- or post-install steps)
+
+    ⚙️ How do you use RPM packages?
+🟢 To install an RPM package:
+
+sudo rpm -ivh package-name.rpm
+
+    -i = install
+
+    -v = verbose
+
+    -h = show progress with hash marks
+
+🟢 To upgrade:
+
+sudo rpm -Uvh package-name.rpm
+
+🟢 To remove:
+
+sudo rpm -e package-name
+
+💬 Why use RPM?
+
+    Simplifies software installation: You don't need to compile from source.
+
+    Tracks files: The RPM database keeps track of what files are installed by which package.
+
+    Handles dependencies: Though traditional rpm alone does not resolve dependencies automatically (you need yum or dnf for that).
+
+💡 Modern alternative: yum or dnf
+
+While rpm works, in most cases people use yum (Yellowdog Updater Modified) or dnf (Dandified YUM) because these automatically handle dependencies and download packages from online repositories.
+
+Example:
+
+sudo yum install package-name
+# or
+sudo dnf install package-name
+
+✅ Summary
+RPM (Red Hat Package Manager)
+📦 Binary package format (.rpm)
+🛠 Tool to install, upgrade, remove packages
+💡 Used in Red Hat-based Linux distros
+
+
+
+
+💡 rpm query commands (querying RPM packages)
+✅ 1️⃣ Check if a package is installed
+
+rpm -q <package-name>
+
+Example:
+
+rpm -q httpd
+
+→ Shows version if installed; otherwise says "package httpd is not installed."
+✅ 2️⃣ Get detailed information about a package
+
+rpm -qi <package-name>
+
+Example:
+
+rpm -qi nginx
+
+→ Shows description, version, license, install date, etc.
+✅ 3️⃣ List all installed RPM packages
+
+rpm -qa
+
+Example:
+
+rpm -qa | grep mysql
+
+→ Lists all installed packages with "mysql" in the name.
+✅ 4️⃣ List files installed by a package
+
+rpm -ql <package-name>
+
+Example:
+
+rpm -ql httpd
+
+→ Lists all files and directories that the httpd package installed.
+✅ 5️⃣ Find out which package a file belongs to
+
+rpm -qf <file-path>
+
+Example:
+
+rpm -qf /usr/bin/vim
+
+→ Tells you which package owns /usr/bin/vim.
+✅ 6️⃣ Check package dependencies
+
+rpm -qR <package-name>
+
+Example:
+
+rpm -qR nginx
+
+→ Lists all packages or libraries required by nginx.
+✅ 7️⃣ Show package changelog
+
+rpm -q --changelog <package-name>
+
+Example:
+
+rpm -q --changelog kernel
+
+→ Shows the changelog for the kernel package.
+✅ 8️⃣ Query an RPM file (before installing)
+
+rpm -qpi <package-file.rpm>   # Information
+rpm -qpl <package-file.rpm>   # List files inside
+rpm -qpR <package-file.rpm>   # Show required dependencies
+
+Example:
+
+rpm -qpi myapp-1.0.0.rpm
+rpm -qpl myapp-1.0.0.rpm
+rpm -qpR myapp-1.0.0.rpm
+
+→ You can examine .rpm files before installing them.
+-------------------------------------------------------------
+
+🌟 What is CentOS?
+
+✅ CentOS stands for Community ENTerprise Operating System.
+It is a Linux distribution that was designed to provide a free, open-source, enterprise-class operating system that is binary-compatible with Red Hat Enterprise Linux (RHEL).
+🟢 Why was CentOS created?
+
+Red Hat Enterprise Linux (RHEL) is a commercial product, and its source code is publicly available (as required by open-source licenses).
+CentOS took this source code, recompiled it, and made it freely available — basically the same software as RHEL, just without Red Hat’s branding, support, or certification.
+💡 Key points about CentOS
+
+    🆓 Free to use — no subscription or license fees.
+
+    💻 Binary-compatible with RHEL — software built for RHEL works on CentOS.
+
+    🛡️ Used widely on servers — especially for web hosting, data centers, and enterprise environments.
+
+    💬 Strong community support — no official support from Red Hat (unless you use "CentOS Stream", which has some collaboration).
+
+⚖️ CentOS vs RHEL
+Feature		CentOS				RHEL
+💰 Cost		Free				Paid subscription
+🔧 Support	Community support		Official Red Hat support
+🔄 Updates	Follows RHEL source code 	Regularly updated and supported officially
+📃 Certification No official certification	Certified, used for compliance
+
+✅ Summary
+CentOS
+🌍 Community-driven, free Linux distro
+💯 Compatible with RHEL
+💻 Used heavily in servers & enterprise
+📅 Now replaced by CentOS Stream
+
+---------------------------------------------------------------------
+
+GREP
+
+💡 What is grep?
+
+✅ grep stands for Global Regular Expression Print.
+It is a command-line tool in Linux/Unix used to search for text patterns inside files or output.
+🔎 What does grep do?
+
+    It searches for a string or pattern in text.
+
+    It prints lines that match.
+
+⚡ Basic syntax
+
+grep "pattern" file
+
+Example:
+
+grep "root" /etc/passwd
+
+→ Finds all lines in /etc/passwd containing the word root.
+🛠️ Useful options
+Option	Description	Example
+-i	Ignore case	grep -i "hello" file.txt finds "Hello", "HELLO", etc.
+-v	Invert match (show lines not matching)	grep -v "error" logfile shows lines without "error"
+-r or -R	Recursive search in directories	grep -r "TODO" /my/code/
+-n	Show line numbers	grep -n "main" file.c
+-l	List only file names with matches	grep -l "import" *.py
+-c	Count number of matching lines	grep -c "http" access.log
+
+Feature	Description
+💬 Name	Global Regular Expression Print
+🔎 Main use	Search text patterns in files or outputs
+⚙️ Flexible	Works with files, pipes, supports regex
+
+----------------------------------------------------------------
+
+ SystemRescueCd (now called SystemRescue) is a Linux-based bootable live CD, DVD, or USB stick designed specifically for system rescue and recovery tasks.
+💡 What is it used for?
+
+SystemRescue is mainly used to:
+
+    Repair unbootable systems (e.g., fix broken bootloaders like GRUB)
+
+    Recover lost data (from corrupted or deleted partitions)
+
+    Back up and restore data (using tools like dd, partimage, rsync, etc.)
+
+    Diagnose hardware problems
+
+    Edit partitions (with tools like GParted or parted)
+
+    Reset forgotten passwords
+
+    Access Linux and Windows file systems when the OS won't boot
+
+    ⚙️ What tools does it include?
+
+Some popular tools included:
+
+    fsck, ntfsfix — file system repair
+
+    testdisk, photorec — recover lost partitions or files
+
+    gparted — graphical partition editor
+
+    ddrescue — advanced data recovery from failing disks
+
+    grub tools — repair or reinstall GRUB bootloader
+
+    chroot — enter a broken system’s environment to repair it
+
+    Networking tools — SSH, ping, traceroute, etc.
+
+    ---------------------------------------------------------------------------
+
+💻 What is Vagrant?
+
+Vagrant is an open-source tool for building and managing virtualized development environments.
+
+It was created by HashiCorp and is mainly used to create reproducible and portable development setups, usually using VirtualBox or other providers (like VMware, Hyper-V, Docker).
+🔥 Why do we use Vagrant?
+
+    Consistency: Every developer can have the same environment (same OS, same dependencies), which reduces "it works on my machine" problems.
+
+    Automation: You define everything in a single file (Vagrantfile), so you can spin up environments automatically.
+
+    Isolation: Your development environment is separated from your host machine.
+    ⚙️ How does it work?
+
+1️⃣ You write a Vagrantfile, which specifies:
+
+    Base image (called a box), e.g., Ubuntu 22.04.
+
+    Provisioning scripts (e.g., shell scripts, Ansible) to install packages or configure things.
+
+    Networking settings, shared folders, etc.
+
+2️⃣ You run vagrant up, which:
+
+    Downloads the base box if needed.
+
+    Creates and starts a virtual machine.
+
+    Applies your provisioning steps.
+
+3️⃣ You can SSH into it using vagrant ssh and work inside your VM.
+
+4️⃣ When you're done, vagrant halt shuts it down, vagrant destroy removes it completely.
+🧰 Common providers supported
+
+    VirtualBox (most common and free)
+
+    VMware
+
+    Hyper-V
+
+    Docker (it can create lightweight containers as well)
+
+| Command           | Description                      |
+| ----------------- | -------------------------------- |
+| `vagrant init`    | Create a new Vagrantfile         |
+| `vagrant up`      | Start and provision VM           |
+| `vagrant ssh`     | SSH into the VM                  |
+| `vagrant halt`    | Stop the VM                      |
+| `vagrant destroy` | Remove the VM completely         |
+| `vagrant reload`  | Restart the VM and apply changes |
+
+Difference between virtualbox and vagrant
+
+ VirtualBox is like a manual kitchen — you buy ingredients, prepare everything yourself, and cook step by step.
+
+🤖 Vagrant is like a recipe robot — you give it a recipe file (Vagrantfile), and it automatically goes to the kitchen, gets the ingredients, and prepares the dish for you the same way every time.
+
+--------------------------------------------------
+6.Veewee tool
+
+Veewee is an open-source tool (written in Ruby) that helps you automate the creation of virtual machine images (base boxes) for tools like:
+Vagrant
+VirtualBox
+VMware
+KVM
+Parallels
+
+It was created by Patrick Debois (known in the DevOps community) to simplify creating clean, repeatable base images.
+
+What does Veewee do?
+Manually setting up a VM to be used as a "base box" can be time-consuming. You typically need to:
+Install an OS (like Ubuntu, CentOS, etc.).
+Apply updates and configure settings.
+Install guest additions (for VirtualBox, VMware, etc.).
+Set up SSH access, user accounts, etc.
+
+Veewee automates this entire process.
+It uses templates that contain the steps and configuration to automatically build and package these base images.
+
+Key Features
+
+✅ Automated OS installation (via kickstart, preseed, or autoYAST files)
+✅ Scriptable post-installation steps (like installing packages, updates)
+✅ Supports multiple virtualization providers (VirtualBox, VMware, etc.)
+✅ Generates Vagrant-compatible base boxes
+✅ Helps keep your base images consistent and repeatable
+
+⚙️ How does it work?
+The high-level flow with Veewee is:
+
+1️⃣ You define a template (e.g., for Ubuntu 22.04).
+2️⃣ Veewee uses this template to boot and install the OS inside a VM automatically.
+3️⃣ It runs provisioning scripts to configure the machine.
+4️⃣ Once done, you can export the image as a "base box" (for Vagrant or other tools).
+
+🗺️ Where is it used?
+
+    When you want custom Vagrant base boxes rather than using pre-built ones.
+
+    When you need to ensure consistent environments across different team members or CI systems.
+
+    For testing infrastructure automation scripts.
+
+⚖️ Status and alternatives
+
+Veewee was more popular around 2013–2016. In recent years, many people switched to using Packer (by HashiCorp), which serves a similar purpose but is more modern and widely maintained.
+
+
+--------------------------------------------------------------
+
+7. Mlocate package
+
+The mlocate package provides a fast file search utility for Linux and Unix-like systems.
+It allows you to quickly find the location of files and directories by name, without having to scan the entire filesystem every time.
+💡 Why is it called mlocate?
+
+    The "m" stands for merged.
+
+    Unlike older versions of locate (like slocate), mlocate merges all file lists into a single database file, improving efficiency and security.
+
+🏃 How does it work?
+
+1️⃣ It uses a database file, usually stored as /var/lib/mlocate/mlocate.db.
+2️⃣ This database is updated periodically by a command called updatedb, which scans the filesystem and records paths.
+3️⃣ The locate command then quickly searches this database instead of reading the whole disk, making it extremely fast.
+⚖️ What does the mlocate package include?
+
+When you install the mlocate package, it typically provides:
+
+    locate — the main search command.
+
+    updatedb — the command to update (refresh) the database.
+
+    Configuration files (e.g., /etc/updatedb.conf).
+
+💽 Why is it useful?
+
+    Much faster than using find to search the whole filesystem.
+
+    Helps sysadmins and developers quickly find files anywhere on the system.
+
+    Works even on large filesystems with millions of files.
+
+🔐 Security features
+
+    mlocate honors file permissions:
+    Users only see files they have access to, thanks to how the database is built and accessed.
+
+    But we use plocate package.
+--------------------------------------------------------
+
+8. PasswordSafe software is used for storing the passwords in secure way on windows.
+KeePassx is used for storing the passwords in a secure way on linux/mac.
+
+These both softwares are free and open source. 
+---------------------------------------------------------

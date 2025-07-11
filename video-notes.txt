@@ -1,0 +1,68 @@
+Learned about
+1.Virtual Box setup
+
+2.CentOS
+ CentOS stands for Community Enterprise Operating System.
+It is a Linux distribution that was designed to provide a free, open-source, enterprise-class operating system that is binary-compatible with Red Hat Enterprise Linux (RHEL).
+
+3.RPM- 
+ RPM stands for Red Hat Package Manager.
+It is a package format (file extension .rpm) and also the tool used to manage these packages on Linux distributions that are based on Red Hat (like RHEL, CentOS, Fedora, Rocky Linux, AlmaLinux, etc.).
+More notes in another file.
+
+4.SystemRescueCD
+ SystemRescueCd (now called SystemRescue) is a Linux-based bootable live CD, DVD, or USB stick designed specifically for system rescue and recovery tasks.
+ What is it used for?
+SystemRescue is mainly used to:
+Repair unbootable systems (e.g., fix broken bootloaders like GRUB)
+Recover lost data (from corrupted or deleted partitions)
+Back up and restore data (using tools like dd, partimage, rsync, etc.)
+Diagnose hardware problems
+Edit partitions (with tools like GParted or parted)
+Reset forgotten passwords
+
+Access Linux and Windows file systems when the OS won't boot
+     What tools does it include?
+
+Some popular tools included:
+fsck, ntfsfix — file system repair
+testdisk, photorec — recover lost partitions or files
+gparted — graphical partition editor
+ddrescue — advanced data recovery from failing disks
+grub tools — repair or reinstall GRUB bootloader
+chroot — enter a broken system’s environment to repair it
+Networking tools — SSH, ping, traceroute, etc.
+
+----------------------------------------------------------
+
+5.Vagrant- A tool which allows us to build a virtual environment.
+Vagrant is an open-source tool for building and managing virtualized development environments.
+
+It was created by HashiCorp and is mainly used to create reproducible and portable development setups, usually using VirtualBox or other providers (like VMware, Hyper-V, Docker).
+ Why do we use Vagrant?
+Consistency: Every developer can have the same environment (same OS, same dependencies), which reduces "it works on my machine" problems.
+
+-----------------------------------------------------------------
+6. Veewee tool
+Its a tool for creating custom virtual boxes, it provides many virtual machine templates that can be used.
+
+-----------------------------------------------------------------
+7. Mlocate package- used to locate files on linux.
+But now we use plocate package
+
+syntax-  locate filename
+used to locate file. 
+example- locate notes.txt
+
+syntax - locate filename | grep directory-name
+
+example- locate notes.txt | grep downloads
+
+------------------------------------------------------------------
+
+8. PasswordSafe software is used for storing the passwords in secure way on windows.
+KeePassx is used for storing the passwords in a secure way on linux/mac.
+
+These both softwares are free and open source. 
+-----------------------------------------------------------------
+
