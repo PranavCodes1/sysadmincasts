@@ -407,3 +407,97 @@ KeePassx is used for storing the passwords in a secure way on linux/mac.
 
 These both softwares are free and open source. 
 ---------------------------------------------------------
+
+9.Puppet
+
+Puppet refers to a configuration management tool used by system administrators and DevOps teams to automate the provisioning, configuration, and management of servers and infrastructure.
+🔧 What is Puppet?
+
+Puppet is an open-source configuration management tool that allows you to:
+
+    Define system configuration using declarative code (called Puppet Manifests).
+
+    Automatically enforce desired system states (like packages installed, services running, files present).
+
+    Manage hundreds or thousands of servers consistently and efficiently.
+
+| Term                   | Meaning                                                                               |
+| ---------------------- | ------------------------------------------------------------------------------------- |
+| **Manifest**           | A `.pp` file that contains Puppet code declaring the desired system state.            |
+| **Module**             | A reusable collection of manifests and data (like classes or facts).                  |
+| **Resource**           | Basic building block in Puppet (e.g., `package`, `file`, `service`).                  |
+| **Node**               | A machine managed by Puppet (can be physical or virtual).                             |
+| **Agent/Master Model** | Puppet Agent runs on nodes and talks to the Puppet Master server to get instructions. |
+
+
+What can you do with puppet?
+
+    Install and configure software (e.g., Apache, MySQL)
+
+    Ensure services are running
+
+    Manage users and groups
+
+    Enforce file permissions
+
+    Schedule recurring tasks
+
+    Apply consistent configurations across development, testing, and production servers.
+
+----------------------------------------------------------------------
+10.Openfire XMPP Server (also caled as Jabber)
+
+Openfire is a popular XMPP (Extensible Messaging and Presence Protocol) server written in Java. It is used to build real-time chat and messaging applications, both for internal communication (e.g., within an organization) and for public-facing messaging systems.
+🔧 What is Openfire?
+
+    Open-source XMPP server.
+
+    Developed and maintained by Ignite Realtime.
+
+    Supports real-time messaging, presence, group chats, and file transfers.
+
+    Comes with a web-based admin console for easy configuration.
+
+    Can be extended with plugins (e.g., for monitoring, archiving, REST API).
+
+    Supports LDAP/Active Directory integration.
+
+📦 Key Features
+| Feature                  | Description                                            |
+| ------------------------ | ------------------------------------------------------ |
+| 🔁 XMPP Support          | Full compliance with XMPP protocol for IM and presence |
+| 🧩 Plugin System         | Extensible via many community and official plugins     |
+| 🔒 TLS/SSL Support       | Secure connections for clients and between servers     |
+  Multi-User Chat	   | Group chat rooms with permissions and moderation       |
+💼 LDAP Integration   	   | Integrates with enterprise directory services          |
+| 📜 Message Archiving     | Store chat history for compliance/audit                |
+| 🌐 Web Admin Console     | Powerful interface at `http://localhost:9090`      
+
+
+📁 File Locations (Default on Linux)
+
+    Config: /etc/openfire/
+
+    Logs: /var/log/openfire/
+
+    Plugins: /usr/share/openfire/plugins/
+
+    Web admin: Port 9090 (HTTP), 9091 (HTTPS)
+
+🧠 Use Cases
+
+    Internal team chat for companies
+
+    Messaging backend for mobile apps
+
+    Customer support live chat
+
+    Private social networks
+
+    School/college messaging systems
+
+
+Pidgin is a free and open-source chat client that lets you connect to multiple chat networks simultaneously. It's popular for its multi-protocol support, meaning you can use it to chat on different services like XMPP (Jabber), IRC, and others — all from one interface.
+-------------------------------------------------------------------
+
+

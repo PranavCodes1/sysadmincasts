@@ -65,4 +65,12 @@ KeePassx is used for storing the passwords in a secure way on linux/mac.
 
 These both softwares are free and open source. 
 -----------------------------------------------------------------
+9.Puppet allows you to quickly automate many sysadmin tasks, like deploying new machines, pushing changes out to existing machines, and helps you verify the configs of existing machines.
+-----------------------------------------------------------------
 
+10.Openfire XMPP Server (also called as jabber).
+It was used to send instant messages.it is used to build real-time chat and messaging applications, both for internal communication (e.g., within an organization) and for public-facing messaging systems.
+
+Pidgin is a free and open-source chat client that lets you connect to multiple chat networks simultaneously. It's popular for its multi-protocol support, meaning you can use it to chat on different services like XMPP (Jabber), IRC, and others — all from one interface.
+------------------------------------------------------------------
+11.
