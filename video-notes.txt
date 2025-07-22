@@ -73,4 +73,11 @@ It was used to send instant messages.it is used to build real-time chat and mess
 
 Pidgin is a free and open-source chat client that lets you connect to multiple chat networks simultaneously. It's popular for its multi-protocol support, meaning you can use it to chat on different services like XMPP (Jabber), IRC, and others — all from one interface.
 ------------------------------------------------------------------
-11.
+11. yum plugin-versionlock package
+It locks specific packages from being updated.
+To install it use-  yum install yum-plugin-versionlock
+To check what files are installed use- rpm --query --list yum-plugin-versionlock
+this will shows the config files.
+------------------------------------------------------------------
+
+

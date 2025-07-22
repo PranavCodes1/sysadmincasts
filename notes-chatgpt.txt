@@ -499,5 +499,11 @@ Openfire is a popular XMPP (Extensible Messaging and Presence Protocol) server w
 
 Pidgin is a free and open-source chat client that lets you connect to multiple chat networks simultaneously. It's popular for its multi-protocol support, meaning you can use it to chat on different services like XMPP (Jabber), IRC, and others — all from one interface.
 -------------------------------------------------------------------
+11. Yum versionlock
 
+The yum versionlock feature is used in RHEL/CentOS/Fedora systems to lock specific package versions so that they don't get upgraded during yum update.
+🔒 What does yum versionlock do?
 
+It prevents a package (or packages) from being updated by locking them at their current installed version.
+
+--------------------------------------------------------------------
