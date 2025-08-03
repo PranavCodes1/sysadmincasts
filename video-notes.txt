@@ -80,4 +80,86 @@ To check what files are installed use- rpm --query --list yum-plugin-versionlock
 this will shows the config files.
 ------------------------------------------------------------------
 
+12.Git
+
+It is a free and open source distributed version control system designed to handle everything from small to very large projects with sooed and efficiency. It was created to help manage the linux kernel development.
+
+Gitolite- helps to manage user access. it manages the permissions.
+
+install git and gitolite on server
+and on client machine install git.
+add user name and email to .gitconfig file using the command below
+git config --global user.name "Pranav Paralkar"
+git config --global user.email "pranav@example.com"
+
+now generate a ssh key by using this command- ssh-keygen -t rsa -b 2048
+next step is to copy the genarated sh key to our git server.
+
+The gitolite.conf file will consist the access of the user to repo (such as to read and write or just read)
+
+--------------------------------------------------------------------
+13.Filesystem Hierarchy Standard
+
+It gives a overview about a unix filesystem should look like.
+By understanding it, it will helps us predict the various locations of files and directories.
+
+Root Directory /
+The top of the filesystem tree. Everything starts here.
+
+Essential Directories under /
+Directory	Purpose
+/bin	Essential user binaries (programs) needed for booting and single-user mode, e.g., ls, cp, mv, cat, bash.
+/sbin	Essential system binaries for system administration, e.g., fsck, mount, shutdown.
+/boot	Boot loader files, Linux kernel, initrd images, and GRUB/LILO configs.
+/dev	Device files (special files that represent hardware), e.g., /dev/sda, /dev/null, /dev/tty.
+/etc	Host-specific configuration files, e.g., /etc/passwd, /etc/hosts, /etc/fstab.
+/home	Home directories of users (except root), e.g., /home/alice.
+/lib	Shared libraries needed for programs in /bin and /sbin.
+/media	Mount point for removable media like USB drives, CDs.
+/mnt	Temporary mount point for filesystems (admin use).
+/opt	Optional add-on software packages.
+/root	Home directory for the root user.
+/run	Runtime variable data (process IDs, sockets, runtime configs).
+/srv	Data for services provided by the system (e.g., web, FTP).
+/tmp	Temporary files (cleared on reboot in many distros).
+
+/usr	Secondary hierarchy (user programs and data):
+├── /usr/bin – Non-essential user binaries (e.g., gcc, python, firefox).	
+├── /usr/sbin – Non-essential system binaries.	
+├── /usr/lib – Libraries for /usr/bin and /usr/sbin.	
+├── /usr/local – Locally installed software (overrides system packages).
+
+/var	Variable data files: logs, caches, mail, spool, lock files.
+├── /var/log – Log files.	
+├── /var/tmp – Temporary files preserved between reboots.	
+├── /var/spool – Queued tasks (printing, mail).
+--------------------------------------------------------------------
+
+14. use common commands on Linux
+
+man ls - gives the manual page for ls command
+pwd - print working directory (prints the directory that we are in).
+top - gives us the uptime of the system. (tasks,cpu, memory).
+ps aux - it shows whats currently running on a particular system.
+df -h  -shows us the storage available.
+du -hs /directory_name/ - it shows the storage used y particular directory.
+cp - copy the files
+use the tab key for auto completing the file/directory name.
+mv - used for moving the file or renaming it.
+rm - used for deletion of file.
+mkdir - to create a directory.
+rmdir - to delete the directory.
+rm -rf  -directly deletes without asking.
+less filename - to look a text file less.
+cat filename - prints the data from the file on terminal.
+vim - editor to edit files.
+-------------------------------------------------------------------
+15.Control Groups (Cgroups)
+
+it provides a mechanism for easily monitoring the system resources by partitioning things like CPU Time,System memory, disk bandwidth, network bandwidth and monitoring into groups and then assigning tasks to those groups.
+--------------------------------------------------------------------
+
+
+
+
 

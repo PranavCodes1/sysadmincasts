@@ -507,3 +507,327 @@ The yum versionlock feature is used in RHEL/CentOS/Fedora systems to lock specif
 It prevents a package (or packages) from being updated by locking them at their current installed version.
 
 --------------------------------------------------------------------
+
+12.Git and Gitolite
+
+🔹 What is Git?
+
+    Git is a distributed version control system (DVCS).
+
+    It lets you track changes in source code, collaborate with others, and roll back to earlier versions.
+
+    Popular for open-source and enterprise projects (Linux kernel, GitHub, GitLab, Bitbucket, etc.).
+
+Key Features of Git:
+
+    Distributed (everyone has a full copy of the repo).
+
+    Branching and merging are fast.
+
+    Staging area (git add before git commit).
+
+    Works offline (you only need network for pushing/pulling).
+
+Example commands:
+
+git init            # start a repository
+git clone URL       # clone repository
+git add file        # stage a file
+git commit -m "msg" # commit changes
+git push origin main # push to remote
+
+🔹 What is Gitolite?
+
+    Gitolite is a Git repository hosting system.
+
+    It allows you to set up your own Git server with fine-grained access control.
+
+    Written in Perl, it manages who can push/pull/clone which repos, down to branch- or tag-level permissions.
+
+Key Features of Gitolite:
+
+    SSH-based access control (no need for separate Linux accounts for each developer).
+
+    Define permissions in a single config file.
+
+    Very lightweight, no database required.
+
+    Supports delegation and mirroring.
+
+    Often used in universities, enterprises, or private setups where GitHub/GitLab is not an option.
+
+    | Feature        | Git                        | Gitolite                                               |
+| -------------- | -------------------------- | ------------------------------------------------------ |
+| Purpose        | Version control            | Repository hosting + access control                    |
+| Scope          | Local + remote repos       | Manages multiple Git repos centrally                   |
+| Authentication | None (just uses SSH/HTTPS) | Fine-grained, key-based SSH access                     |
+| Example Usage  | `git commit`, `git push`   | Restrict `userA` to read-only, `userB` to write access |
+| Alternatives   | N/A (fundamental tool)     | GitHub, GitLab, Gitea, Bitbucket                       |
+
+
+------------------------------------------------------------------------------------
+
+13.Filesystem Hierarchy Standard
+
+The Filesystem Hierarchy Standard (FHS) is a specification that defines the directory structure and contents of a Linux or Unix-like operating system. It ensures consistency so that software, scripts, and system administrators can rely on finding files in the same locations across different distributions.
+📂 Major Directories in FHS
+
+Here’s a breakdown of the important directories defined by FHS:
+Root Directory /
+
+    The top of the filesystem tree. Everything starts here.
+
+
+Essential Directories under /
+Directory	Purpose
+/bin	Essential user binaries (programs) needed for booting and single-user mode, e.g., ls, cp, mv, cat, bash.
+/sbin	Essential system binaries for system administration, e.g., fsck, mount, shutdown.
+/boot	Boot loader files, Linux kernel, initrd images, and GRUB/LILO configs.
+/dev	Device files (special files that represent hardware), e.g., /dev/sda, /dev/null, /dev/tty.
+/etc	Host-specific configuration files, e.g., /etc/passwd, /etc/hosts, /etc/fstab.
+/home	Home directories of users (except root), e.g., /home/alice.
+/lib	Shared libraries needed for programs in /bin and /sbin.
+/media	Mount point for removable media like USB drives, CDs.
+/mnt	Temporary mount point for filesystems (admin use).
+/opt	Optional add-on software packages.
+/root	Home directory for the root user.
+/run	Runtime variable data (process IDs, sockets, runtime configs).
+/srv	Data for services provided by the system (e.g., web, FTP).
+/tmp	Temporary files (cleared on reboot in many distros).
+
+/usr	Secondary hierarchy (user programs and data):
+├── /usr/bin – Non-essential user binaries (e.g., gcc, python, firefox).
+
+├── /usr/sbin – Non-essential system binaries.	
+
+├── /usr/lib – Libraries for /usr/bin and /usr/sbin.	
+
+├── /usr/local – Locally installed software (overrides system packages).
+
+/var	Variable data files: logs, caches, mail, spool, lock files.
+
+├── /var/log – Log files.	
+
+├── /var/tmp – Temporary files preserved between reboots.	
+
+├── /var/spool – Queued tasks (printing, mail).	
+
+
+
+🔑 Key Points
+
+    /bin, /sbin, /lib contain essential files for system boot and repair.
+
+    /usr is for read-only user applications and documentation.
+
+    /var contains variable data that changes frequently.
+
+    /etc is always for configuration, not binaries.
+
+    /home stores user data, making it easy to back up separately.
+
+✅ Following the FHS makes it easier to:
+
+    Maintain and troubleshoot systems.
+
+    Ensure compatibility across Linux distributions.
+
+    Standardize scripts and software packaging.
+
+ ----------------------------------------------
+
+ 14.use common commands on Linux
+
+Basic Linux Commands
+
+    man ls → Shows the manual page for the ls command (use q to quit).
+
+    pwd → Prints the current working directory.
+
+    top → Displays real-time system information: uptime, tasks, CPU, memory usage, and running processes.
+
+    ps aux → Shows all currently running processes on the system.
+
+    df -h → Displays disk space usage in a human-readable format.
+
+    du -hs /directory_name/ → Shows the total disk usage of a particular directory (summary).
+
+    cp source target → Copies files (use -r to copy directories).
+
+    Tab key → Auto-completes file/directory names.
+
+    mv old_name new_name → Moves files/directories or renames them.
+
+    rm filename → Deletes a file.
+
+    mkdir dirname → Creates a new directory.
+
+    rmdir dirname → Removes an empty directory.
+
+    rm -rf dirname → Recursively deletes a directory and its contents without asking (⚠ dangerous).
+
+    less filename → Opens a file in a pager (use arrows to navigate, q to quit).
+
+    cat filename → Prints the file content to the terminal.
+
+    vim filename → Opens a file in the vim editor for editing.
+
+
+
+🐧 Linux Commands Cheat Sheet
+📂 File & Directory Management
+
+    ls → List files in directory
+
+        ls -l → Long listing (permissions, owner, size, date)
+
+        ls -a → Show hidden files (starting with .)
+
+        ls -lh → Human-readable sizes
+
+    pwd → Show current working directory
+
+    cd /path → Change directory
+
+        cd ~ → Go to home directory
+
+        cd - → Go to previous directory
+
+    mkdir dirname → Create a new directory
+
+        mkdir -p parent/child → Create parent + child directories together
+
+    rmdir dirname → Remove empty directory
+
+    rm -rf dirname → Force remove directory and contents (dangerous!)
+
+    cp source dest → Copy file
+
+        cp -r dir1 dir2 → Copy directory recursively
+
+        cp -i file1 file2 → Ask before overwrite
+
+    mv old new → Move or rename file
+
+        mv -i file1 file2 → Ask before overwrite
+
+    rm file → Remove file
+
+        rm -i file → Confirm before delete
+
+📄 Viewing & Editing Files
+
+    cat file → Print file contents
+
+    less file → View file page by page (q = quit)
+
+    head file → Show first 10 lines
+
+        head -n 20 file → First 20 lines
+
+    tail file → Show last 10 lines
+
+        tail -f logfile → Live view of log
+
+    vim file → Open file in Vim editor
+
+    nano file → Open file in Nano editor (easier for beginners)
+
+⚙️ System Monitoring
+
+    top → Real-time system monitor
+
+        htop (if installed) → Better interactive process monitor
+
+    ps aux → Show all running processes
+
+        ps aux | grep name → Search for process
+
+    df -h → Show disk usage of all mounted filesystems
+
+    du -hs /dir → Show total size of a directory
+
+    uptime → Show system uptime and load average
+
+🔎 Searching & Finding
+
+    find /path -name filename → Search for files
+
+    grep "text" file → Search text in a file
+
+        grep -r "text" /dir → Recursive search in directory
+
+        grep -i "text" file → Case-insensitive search
+
+📦 File Compression
+
+    tar -cvf archive.tar dir/ → Create tar archive
+
+    tar -xvf archive.tar → Extract archive
+
+    gzip file → Compress file → creates file.gz
+
+    gunzip file.gz → Decompress file
+
+👤 Permissions
+
+    chmod 755 file → Change file permissions
+
+    chown user:group file → Change ownership
+
+⚡ Pro tip: You can combine commands with pipes |
+Example:
+
+ps aux | grep firefox
+
+→ Shows all running Firefox processes.
+
+-----------------------------------------------------------------
+15.Control groups (Cgroups)
+
+Control Groups (cgroups) are a Linux kernel feature that lets you allocate, prioritize, limit, and monitor system resources (like CPU, memory, disk I/O, and network) for a set of processes.
+
+They are widely used in containers (like Docker, Kubernetes, LXC) and system management (systemd) to enforce resource control and isolation.
+🔑 Key Features of cgroups
+
+    Resource Limiting – Restrict how much CPU, memory, or disk I/O a group of processes can use.
+
+        Example: limit a container to 512MB RAM.
+
+    Prioritization – Give higher CPU or I/O priority to certain workloads.
+
+    Accounting – Track how much resources each group consumes.
+
+    Isolation – Prevent one workload from starving others by applying strict limits.
+
+    Control – Apply policies dynamically at runtime (start, stop, freeze processes).
+
+⚙️ Main Controllers (Subsystems)
+
+    cpu → control CPU time allocation
+
+    cpuacct → report CPU usage
+
+    memory → limit memory usage, OOM control
+
+    blkio → block device (disk) I/O control
+
+    pids → limit the number of processes
+
+    net_cls / net_prio → network traffic control
+
+    freezer → suspend/resume processes
+
+📖 Versions
+
+    cgroups v1: Multiple hierarchies per controller, more complex.
+
+    cgroups v2: Unified hierarchy, simplifies management (used in modern Linux distros, required by Kubernetes).
+
+
+✅ In short: cgroups = kernel feature for resource control + isolation.
+They are the foundation of containerization (Docker, Podman, Kubernetes, LXC all rely on them).
+
+------------------------------------------------------
+
+
