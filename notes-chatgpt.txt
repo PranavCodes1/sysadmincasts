@@ -829,5 +829,169 @@ They are widely used in containers (like Docker, Kubernetes, LXC) and system man
 They are the foundation of containerization (Docker, Podman, Kubernetes, LXC all rely on them).
 
 ------------------------------------------------------
+16. Hard link and symbolic link
+
+🔗 Hard Links and Symbolic (Soft) Links in Linux
+
+In Linux, links are pointers to files. They let you access the same file from different paths.
+1. Hard Links
+
+    A hard link is another name for an existing file.
+
+    Both the original file and the hard link point to the same inode (the inode stores the file’s data and metadata).
+
+    If you delete the original file, the data is still accessible through the hard link (until all hard links are deleted).
+
+    They cannot link to directories (by default) and cannot cross filesystems.
+
+Example:
+
+# create a file
+echo "Hello Linux" > file1.txt
+
+# create a hard link
+ln file1.txt file1_hardlink.txt
+
+# check inode numbers
+ls -li
+
+You’ll see that file1.txt and file1_hardlink.txt have the same inode number → they point to the same data.
+
+✅ If you edit either file, changes will reflect in both.
+✅ If you delete file1.txt, you can still access the content via file1_hardlink.txt.
+2. Symbolic Links (Soft Links)
+
+    A symbolic link is like a shortcut or pointer to another file.
+
+    It stores the path to the target file, not the actual data.
+
+    If the original file is deleted, the symlink becomes broken (dangling).
+
+    Can link to directories and work across different filesystems.
+
+Example:
+
+# create a symbolic link
+ln -s file1.txt file1_symlink.txt
+
+# list details
+ls -l
+
+You’ll see:
+
+file1_symlink.txt -> file1.txt
+
+✅ If you open file1_symlink.txt, it takes you to file1.txt.
+❌ If you delete file1.txt, the symlink points to nothing.
 
 
+📊 Quick Comparison
+Feature	Hard Link	Symbolic (Soft) Link
+Points to	Inode (file data directly)	File path (shortcut)
+Inode number	Same as original	Different
+Works across FS?	❌ No	✅ Yes
+Can link to dir?	❌ No (normally)	✅ Yes
+If original deleted	Data still accessible	Becomes broken
+
+3. Useful Commands
+
+    Create hard link:
+
+ln source_file link_name
+
+Create symbolic link:
+
+ln -s source_file link_name
+
+View inodes:
+
+ls -li
+
+Remove a link:
+
+rm link_name
+
+
+
+📦 What is an Inode?
+
+    An inode (index node) is a data structure used by Linux/Unix filesystems (like ext4, xfs) to store metadata about a file.
+
+    Every file (and directory) has an inode.
+
+    When you list files with ls -li, the first number you see is the inode number.
+
+📋 What an Inode Contains
+
+An inode stores everything about a file except its name and actual data.
+
+Inode contains:
+
+    📌 File type (regular file, directory, symlink, etc.)
+
+    📏 File size
+
+    🧾 Permissions (read/write/execute for owner, group, others)
+
+    👤 Ownership (UID = user, GID = group)
+
+    📅 Timestamps
+
+        atime – last access time
+
+        mtime – last modification time (content change)
+
+        ctime – last status change (permissions/ownership change)
+
+    🔗 Link count (number of hard links pointing to this inode)
+
+    📍 Pointers to data blocks (addresses where the actual file content is stored on disk)
+
+
+🔗 Hard Link
+
+    Shares the same inode number as the original file.
+
+    Both the original file and hard link point to the same inode → same data blocks.
+
+    If you delete one, the data still exists as long as at least one link remains.
+
+
+🔗 Symbolic Link
+
+    Has its own inode number, different from the target file.
+
+    Its inode stores the path of the target file, not the actual data.
+
+    If the original file is deleted, the symlink breaks.
+
+--------------------------------------------------------------------
+17.MediaWiki is a free and open-source wiki software platform written in PHP, originally developed for Wikipedia. It powers not only Wikipedia but also other Wikimedia projects (like Wiktionary, Wikibooks, Wikidata) and many independent wikis around the world.
+
+Here are the key points about MediaWiki:
+
+    Wiki Engine: It lets multiple users collaborate on editing pages directly in a web browser, with built-in version control.
+
+    Markup Language: Uses its own simple markup syntax called wikitext (e.g., [[Link]] for links).
+
+    Database-backed: Stores content in a relational database (usually MySQL or MariaDB, but also supports PostgreSQL and SQLite).
+
+    Extensions and Skins: Highly extensible — you can add extensions (like VisualEditor, Semantic MediaWiki) and skins (themes) to customize it.
+
+    Features:
+
+        Page history and rollback
+
+        User accounts, permissions, and groups
+
+        Templates and transclusion
+
+        File uploads (images, media)
+
+        Multilingual support
+
+        APIs for bots and automation
+
+    Usage: Popular for building knowledge bases, documentation systems, community wikis, and internal company wikis.
+
+--------------------------------------------------------------

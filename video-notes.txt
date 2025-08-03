@@ -158,8 +158,31 @@ vim - editor to edit files.
 
 it provides a mechanism for easily monitoring the system resources by partitioning things like CPU Time,System memory, disk bandwidth, network bandwidth and monitoring into groups and then assigning tasks to those groups.
 --------------------------------------------------------------------
+16. symbolic link and hard link
+
+symbolic link - access a pointer to a real file that points to the data on a file.
+hard link - we give the existing file a second name and this second name points to the data .
+
+ln - makes links between files. it makes hard links by default but if we want to create symbolic link we have to use ln --symbolic or we can use ln -s.
+
+these files have inode (inode has metadata of the file) which consists of size,type,device,uid/gid,mode(permissions),timestamps,link count, pointers to the disk blocks.
+
+hard link files will have the same inode number as of original file whereas symbolic link will have a different inode.
 
 
 
+Conclusion
+
+Symbolic links				| Hard links
+Easy to understand			|hard to recognize
+works for files and directories		|only works for files
+works across filesystems		|not across filesystems
+					|Better performance
+---------------------------------------------------------------------
+
+17. Mediawiki
+a free opensource software for storing internal documentation, policies and procedures, as well as other information about your infrastructure.
+
+---------------------------------------------------------------------
 
 
